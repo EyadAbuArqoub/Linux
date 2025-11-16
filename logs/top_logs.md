@@ -1,4 +1,4 @@
-
+# Commands for logs
 
 
 
@@ -16,7 +16,7 @@ Nov 16 20:12:36 RHEL7 sshd[1725]: Failed password for root from 192.168.15.1 por
 
 
 <details>
-  <summary><b>last username</b></summary>
+  <summary>last username</summary>
 
   <details>
     <summary>last root</summary>
