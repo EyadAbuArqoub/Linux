@@ -12,11 +12,14 @@ Nov 16 20:12:36 RHEL7 sshd[1725]: Failed password for root from 192.168.15.1 por
 </details>
 
 
+---
+
 
 <details>
-<summary>last username</summary>
-<summary>last root</summary>
-<details>
+  <summary><b>last username</b></summary>
+
+  <details>
+    <summary>last root</summary>
 <pre>
 [root@RHEL7 ~]# last root
 root     pts/1        192.168.15.1     Sun Nov 16 21:06   still logged in
@@ -30,9 +33,10 @@ root     tty1                          Sun Nov 16 00:22 - 00:23  (00:01)
 wtmp begins Sun Nov 16 00:01:53 2025
 [root@RHEL7 ~]#
 </pre>
-</details>
-<summary>last eyad</summary>
-<details>
+  </details>
+
+  <details>
+    <summary>last eyad</summary>
 <pre>
 [root@RHEL7 ~]# last eyad
 eyad     pts/1        192.168.15.1     Sun Nov 16 21:07   still logged in
@@ -40,58 +44,6 @@ eyad     pts/1        192.168.15.1     Sun Nov 16 21:07   still logged in
 wtmp begins Sun Nov 16 00:01:53 2025
 [root@RHEL7 ~]#
 </pre>
-</details>
-</details>
-
-
-
----
-
-
-<details>
-  <summary><b>A</b></summary>
-
-  <details>
-    <summary>A.1</summary>
-    some details for A.1
-  </details>
-
-  <details>
-    <summary>A.2</summary>
-    some details for A.2
-  </details>
-
-  <details>
-    <summary>A.3</summary>
-    some details for A.3
   </details>
 
 </details>
-
-
----
-
-
-<details>
-  <summary>A</summary>
-  <p>
-
-  <details>
-    <summary>A.1</summary>
-    <p>some details</p>
-  </details>
-
-  <details>
-    <summary>A.2</summary>
-    <p>some details</p>
-  </details>
-
-  <details>
-    <summary>A.3</summary>
-    <p>some details</p>
-  </details>
-
-  </p>
-</details>
-
-
