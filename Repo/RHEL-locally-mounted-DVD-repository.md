@@ -1,10 +1,18 @@
 
 # RHEL locally-mounted DVD repository
 
+This is to setup a local repository used a mounted RHEL DVD.
+
+## Steps
+
+1. Connect latest RHEL DVD to the server or download it inside your server.
+2. Run below commands based on server version.
+
 ## RHEL7 - Set up yum repository for locally-mounted DVD
 
 ```bash
 mkdir -p /mnt/disc
+#mount -o loop downloaded_iso_RHEL7.iso /media/disc
 mount /dev/sr0 /mnt/disc
 
 cp /mnt/disc/media.repo /etc/yum.repos.d/rhel7dvd.repo
@@ -28,20 +36,20 @@ Reference: [How to set up yum repository for locally-mounted DVD on Red Hat Ente
 ## RHEL8 - Set up yum repository for locally-mounted DVD
 
 ```bash
-mkdir -p /media/rheldvd
-#mount -o loop downloaded_iso_name.iso /media/rheldvd
-mount /dev/sr0 /media/rheldvd
+mkdir -p /mnt/disc
+#mount -o loop downloaded_iso_RHEL8.iso /mnt/disc
+mount /dev/sr0 /mnt/disc
 
 echo "[dvd-BaseOS]" >> /etc/yum.repos.d/my.repo
 echo "name=DVD for RHEL - BaseOS" >> /etc/yum.repos.d/my.repo
-echo "baseurl=file:///media/rheldvd/BaseOS" >> /etc/yum.repos.d/my.repo
+echo "baseurl=file:///mnt/disc/BaseOS" >> /etc/yum.repos.d/my.repo
 echo "enabled=1" >> /etc/yum.repos.d/my.repo
 echo "gpgcheck=1" >> /etc/yum.repos.d/my.repo
 echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release" >> /etc/yum.repos.d/my.repo
 
 echo "[dvd-AppStream]" >> /etc/yum.repos.d/my.repo
 echo "name=DVD for RHEL - AppStream" >> /etc/yum.repos.d/my.repo
-echo "baseurl=file:///media/rheldvd/AppStream" >> /etc/yum.repos.d/my.repo
+echo "baseurl=file:///mnt/disc/AppStream" >> /etc/yum.repos.d/my.repo
 echo "enabled=1" >> /etc/yum.repos.d/my.repo
 echo "gpgcheck=1" >> /etc/yum.repos.d/my.repo
 echo "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release" >> /etc/yum.repos.d/my.repo
@@ -58,6 +66,7 @@ Reference: [Need to set up yum repository for locally-mounted DVD on Red Hat Ent
 
 ```bash
 mkdir -p /mnt/disc
+#mount -o loop downloaded_iso_RHEL9.iso /mnt/disc
 mount /dev/sr0 /mnt/disc
 
 echo "[BaseOS]" >> /etc/yum.repos.d/rhel9dvd.repo
@@ -93,7 +102,7 @@ Add commands to run @startup
 
 ```bash
 cat /etc/rc.d/rc.local
-mount /dev/sr0  /media/rheldvd
+mount /dev/sr0  /mnt/disc
 
 chmod +x /etc/rc.d/rc.local
 ```
