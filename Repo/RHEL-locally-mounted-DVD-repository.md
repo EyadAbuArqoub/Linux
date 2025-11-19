@@ -21,9 +21,7 @@ rm -rf /var/cache/yum/*
 yum clean all
 ```
 
-
-[How to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 7 - Red Hat Customer Portal](https://access.redhat.com/solutions/1355683)
-
+Reference: [How to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 7 - Red Hat Customer Portal](https://access.redhat.com/solutions/1355683)
 
 ---
 
@@ -52,9 +50,7 @@ rm -rf /var/cache/yum/*
 yum clean all
 ```
 
-
-[Need to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 8 - Red Hat Customer Portal](https://access.redhat.com/solutions/3776721)
-
+Reference: [Need to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 8 - Red Hat Customer Portal](https://access.redhat.com/solutions/3776721)
 
 ---
 
@@ -89,12 +85,9 @@ yum repolist
 #yum update
 ```
 
-
-[Need to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 9 - Red Hat Customer Portal](https://access.redhat.com/solutions/6913101)
-
+Reference: [Need to set up yum repository for locally-mounted DVD on Red Hat Enterprise Linux 9 - Red Hat Customer Portal](https://access.redhat.com/solutions/6913101)
 
 ---
-
 
 Add commands to run @startup
 
@@ -104,5 +97,3 @@ mount /dev/sr0  /media/rheldvd
 
 chmod +x /etc/rc.d/rc.local
 ```
-
-
