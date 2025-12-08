@@ -56,12 +56,14 @@ yum-config-manager --disable <repo-id>
 
 RHEL Repos
 
-| RHEL | Base Repos                       | Optional/Development Repos               |
-| ---- | -------------------------------- | ---------------------------------------- |
-| 6    | rhel-6-server-rpms               | rhel-6-server-optional-rpms              |
-| 7    | rhel-7-server-rpms               | rhel-7-server-optional-rpms              |
-| 8    | rhel-8-for-x86_64-baseos-rpms    | codeready-builder-for-rhel-8-x86_64-rpms |
-| 8    | rhel-8-for-x86_64-appstream-rpms | codeready-builder-for-rhel-8-x86_64-rpms |
-| 9    | rhel-9-for-x86_64-baseos-rpms    | codeready-builder-for-rhel-9-x86_64-rpms |
-| 9    | rhel-9-for-x86_64-appstream-rpms | codeready-builder-for-rhel-9-x86_64-rpms |
+| RHEL | Base Repos                       | Optional/Development Repos               | High Availability                       | Resilient Storage                       |
+| ---- | -------------------------------- | ---------------------------------------- | --------------------------------------- | --------------------------------------- |
+| 6    | rhel-6-server-rpms               | rhel-6-server-optional-rpms              | rhel-ha-for-rhel-6-server-rpms          | rhel-rs-for-rhel-6-server-rpms          |
+| 7    | rhel-7-server-rpms               | rhel-7-server-optional-rpms              | rhel-ha-for-rhel-7-server-rpms          | rhel-rs-for-rhel-7-server-rpms          |
+| 8    | rhel-8-for-x86_64-baseos-rpms    | codeready-builder-for-rhel-8-x86_64-rpms | rhel-8-for-x86_64-highavailability-rpms | rhel-8-for-x86_64-resilientstorage-rpms |
+| 8    | rhel-8-for-x86_64-appstream-rpms | codeready-builder-for-rhel-8-x86_64-rpms |                                         |                                         |
+| 9    | rhel-9-for-x86_64-baseos-rpms    | codeready-builder-for-rhel-9-x86_64-rpms | rhel-9-for-x86_64-highavailability-rpms | rhel-9-for-x86_64-resilientstorage-rpms |
+| 9    | rhel-9-for-x86_64-appstream-rpms | codeready-builder-for-rhel-9-x86_64-rpms |                                         |                                         |
+
+
 
