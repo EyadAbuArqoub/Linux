@@ -23,13 +23,23 @@ subscription-manager attach --auto
 ```bash
 # List and show subscription details
 subscription-manager list --available --all
+subscription-manager repos --list
+subscription-manager repos --list-enabled
 subscription-manager list
 subscription-manager status
 ```
 
 ```bash
+# RHEL6
 subscription-manager repos --enable=rhel-6-server-optional-rpms
 subscription-manager repos --disable=rhel-6-server-optional-rpms
+
+# RHEL7
+
+subscription-manager repos --enable=rhel-7-server-rpms
+subscription-manager repos --enable=rhel-7-server-optional-rpms
+subscription-manager repos --enable=rhel-7-server-extras-rpms
+subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
 ```
 
 ```bash
