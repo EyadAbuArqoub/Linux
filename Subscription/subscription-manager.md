@@ -35,11 +35,16 @@ subscription-manager repos --enable=rhel-6-server-optional-rpms
 subscription-manager repos --disable=rhel-6-server-optional-rpms
 
 # RHEL7
-
 subscription-manager repos --enable=rhel-7-server-rpms
 subscription-manager repos --enable=rhel-7-server-optional-rpms
 subscription-manager repos --enable=rhel-7-server-extras-rpms
 subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
+
+# RHEL8
+
+
+# RHEL9
+
 ```
 
 ```bash
