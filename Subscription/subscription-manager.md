@@ -40,6 +40,8 @@ subscription-manager repos --enable=rhel-7-server-optional-rpms
 subscription-manager repos --enable=rhel-7-server-extras-rpms
 subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
 
+subscription-manager repos --disable=* --enable=rhel-ha-for-rhel-7-server-rpms --enable=rhel-7-server-rpms
+
 # RHEL8
 rhel-8-for-x86_64-highavailability-rpms
 
@@ -54,7 +56,8 @@ yum-config-manager --enable <repo-id>
 yum-config-manager --disable <repo-id>
 ```
 
-RHEL Repos
+
+# RHEL Repos
 
 | RHEL | Base Repos                       | Optional/Development Repos               | High Availability                       | Resilient Storage                       |
 | ---- | -------------------------------- | ---------------------------------------- | --------------------------------------- | --------------------------------------- |
@@ -67,3 +70,6 @@ RHEL Repos
 
 
 
+# URLs
+
+- [Package Browser - Red Hat Customer Portal](https://access.redhat.com/downloads/content/package-browser)
