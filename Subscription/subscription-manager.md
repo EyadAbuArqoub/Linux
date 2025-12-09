@@ -40,6 +40,11 @@ subscription-manager repos --enable=rhel-7-server-optional-rpms
 subscription-manager repos --enable=rhel-7-server-extras-rpms
 subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
 
+subscription-manager repos --enable rhel-7-server-rpms
+subscription-manager repos --enable rhel-7-server-extras-rpms
+subscription-manager repos --enable rhel-7-server-optional-rpms
+subscription-manager repos --enable rhel-7-server-supplementary-rpms
+
 subscription-manager repos --disable=* --enable=rhel-ha-for-rhel-7-server-rpms --enable=rhel-7-server-rpms
 
 # RHEL8
