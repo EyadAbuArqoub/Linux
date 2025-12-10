@@ -48,10 +48,10 @@ subscription-manager repos --enable rhel-7-server-supplementary-rpms
 subscription-manager repos --disable=* --enable=rhel-ha-for-rhel-7-server-rpms --enable=rhel-7-server-rpms
 
 # RHEL8
-rhel-8-for-x86_64-highavailability-rpms
+subscription-manager repos --enable rhel-8-for-x86_64-highavailability-rpms
 
 # RHEL9
-rhel-9-for-x86_64-highavailability-rpms
+subscription-manager repos --enable rhel-9-for-x86_64-highavailability-rpms
 
 ```
 
