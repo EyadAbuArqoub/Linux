@@ -1,4 +1,27 @@
+# How to migrate many pvs into on pv?
 
+## Case
+
+- We have a Linux VM which has many pvs for an LVM lv mounted under /data directory as example.
+- This lv data keep increasing, and you keep adding new disks, you have now more than 10 disks, each disk size is vary between 100 - 500 GB as an example.
+- you can group these disks into one disk, to meke this easy for management or for any other resons like you are migration to new storage that has best peeformance.
+- Below example explain how to do that? in our example we have only 2 disks and we are going to gorup it into one disk.
+
+
+## Example
+
+### Initial setup
+
+- Created VG vg-data from:
+- /dev/sdb (1G)
+- /dev/sdc (2G)
+- Created LV lv-data ≈ 3G
+- Formatted it with XFS
+- Mounted it persistently on /data
+- Then: added new disk /dev/sdd and migrated data
+
+
+### Steps
 
 ```bash
 [root@eyad ~]# lsblk
@@ -100,11 +123,10 @@ sdc                    8:32   0    2G  0 disk
 └─vg--data-lv--data  253:2    0    3G  0 lvm  /data
 sr0                   11:0    1 1024M  0 rom
 [root@eyad ~]#
-
-===================================================================================================
-
+```
 
 
+```bash
 [root@eyad ~]# fallocate -l 100M /data/tmp-01.img
 [root@eyad ~]# fallocate -l 100M /data/tmp-02.img
 [root@eyad ~]# fallocate -l 100M /data/tmp-03.img
@@ -136,10 +158,6 @@ Filesystem                    Type  Size  Used Avail Use% Mounted on
 /dev/mapper/vg--data-lv--data xfs   3.0G  2.8G  272M  92% /data
 [root@eyad ~]#
 
-===================================================================================================
-
-
-
 [root@eyad ~]# df -Th /data/
 Filesystem                    Type  Size  Used Avail Use% Mounted on
 /dev/mapper/vg--data-lv--data xfs   3.0G  2.8G  272M  92% /data
@@ -158,15 +176,15 @@ sdc                    8:32   0    2G  0 disk
 └─vg--data-lv--data  253:2    0    3G  0 lvm  /data
 sr0                   11:0    1 1024M  0 rom
 [root@eyad ~]#
+```
 
 
 
 
-
-===================================================================================================
 
 Add new disk /dev/sdd 5 GB
 
+```bash
 [root@eyad ~]# for host in `ls /sys/class/scsi_host/`; do echo "- - -" >/sys/class/scsi_host/${host}/scan; done
 [root@eyad ~]#
 [root@eyad ~]# lsblk
@@ -480,5 +498,128 @@ sr0                   11:0    1 1024M  0 rom
   swap    centos_eyad -wi-ao----   5.00g
   lv-data vg-data     -wi-ao----   2.99g
 [root@eyad ~]#
-
 ```
+
+### Summary
+
+
+**1. Detect new disks**
+
+```bash
+for host in /sys/class/scsi_host/*; do echo "- - -" > $host/scan; done
+lsblk
+```
+
+---
+
+**2. Create Volume Group and Logical Volume**
+
+```bash
+vgcreate vg-data /dev/sdb /dev/sdc
+lvcreate -n lv-data -l 100%FREE vg-data
+mkfs.xfs /dev/vg-data/lv-data
+```
+
+---
+
+**3. Mount the filesystem permanently**
+
+```bash
+mkdir /data
+echo "/dev/vg-data/lv-data /data xfs defaults 0 0" >> /etc/fstab
+mount -a
+```
+
+---
+
+**4. Verify mount**
+
+```bash
+df -Th /data
+lsblk
+```
+
+---
+
+**5. Add new larger disk**
+
+```bash
+# After adding disk in VMware
+for host in /sys/class/scsi_host/*; do echo "- - -" > $host/scan; done
+lsblk
+```
+
+---
+
+**6. Extend Volume Group**
+
+```bash
+vgextend vg-data /dev/sdd
+```
+
+---
+
+**7. Migrate data from old disks to new disk (online)**
+
+```bash
+pvmove /dev/sdb /dev/sdd
+pvmove /dev/sdc /dev/sdd
+```
+
+---
+
+**8. Remove old disks from VG**
+
+```bash
+vgreduce vg-data /dev/sdb
+vgreduce vg-data /dev/sdc
+pvremove /dev/sdb /dev/sdc
+```
+
+---
+
+**9. Remove disks from OS**
+
+```bash
+echo 1 > /sys/block/sdb/device/delete
+echo 1 > /sys/block/sdc/device/delete
+```
+
+---
+
+**10. Reboot system**
+
+```bash
+reboot
+```
+
+---
+
+**11. Verify final state**
+
+```bash
+lsblk
+pvs
+vgs
+lvs
+df -Th /data
+```
+
+---
+
+**12. (Optional) Expand filesystem to use all space**
+
+```bash
+lvextend -l +100%FREE /dev/vg-data/lv-data
+xfs_growfs /data
+```
+
+---
+
+**Final Result**
+
+* `vg-data` uses **only one 5G disk**
+* `/data` mounted and intact
+* Old disks removed safely
+* No downtime or data loss
+
