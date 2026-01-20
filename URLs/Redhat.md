@@ -1,6 +1,6 @@
 # URLs
 
-- [Labs - Red Hat Customer Portal](https://access.redhat.com/labs/)
+- [Labs](https://access.redhat.com/labs/)
 - [Red Hat CVE Checker](https://access.redhat.com/labs/cvechecker/)
 - [Red Hat Product Errata Advisory Checker](https://access.redhat.com/labs/rhpeac/)
 - [SSH Vulnerability Helper](https://access.redhat.com/labs/sshvh/)
