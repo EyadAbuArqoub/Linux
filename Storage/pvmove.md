@@ -4,7 +4,7 @@
 
 - We have a Linux VM which has many pvs for an LVM lv mounted under /data directory as example.
 - This lv data keep increasing, and you keep adding new disks, you have now more than 10 disks, each disk size is vary between 100 - 500 GB as an example.
-- you can group these disks into one disk, to meke this easy for management or for any other resons like you are migration to new storage that has best peeformance.
+- you can group these disks into one disk, to make this easy for management or for any other resons like you are migrating to a new storage that has best peeformance.
 - Below example explain how to do that? in our example we have only 2 disks and we are going to gorup it into one disk.
 
 
