@@ -22,4 +22,3 @@
 - [Red Hat Enterprise Linux Release Dates](https://access.redhat.com/articles/red-hat-enterprise-linux-release-dates)
 - [Red Hat Enterprise Linux Technology Capabilities and Limits](https://access.redhat.com/articles/rhel-limits)
 - [Support Policies for RHEL High Availability Clusters](https://access.redhat.com/articles/2912891)
-
